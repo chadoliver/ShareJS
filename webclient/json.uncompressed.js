@@ -692,6 +692,10 @@ var WEB = true;
     removeAt: function(path, cb) {
       var elem, key, op, _ref;
       _ref = traverse(this.snapshot, path), elem = _ref.elem, key = _ref.key;
+      if (elem.constructor === Array) {
+  	    key = elem.indexOf(key);
+	    }
+      
       if (typeof elem[key] === 'undefined') {
         throw new Error('no element at that path');
       }
